@@ -112,6 +112,10 @@ namespace Akvelon.TaskTracker.BusinessLogic.Services
 
         public async Task<Guid> CreateAsync(ProjectModel projectModel)
         {
+            if (projectModel.ProjectPriority > ProjectPriority.High || projectModel.ProjectPriority < ProjectPriority.Low)
+            {
+                throw new Exception("Project priority can only be 0, 1 or 2.");
+            }
             var project = _mapper.Map<Project>(projectModel);
 
             project.CompletedDate = null;
