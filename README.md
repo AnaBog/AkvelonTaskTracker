@@ -104,5 +104,26 @@ This WEB API tracks the tasks and project. Each project has tasks, but each task
 
 #### This endpoint moves a task from one project to another, using TaskId and ProjectId
 
+# Unit Tests
+
+Unit tests consist of classes that prepare the data for the tests, and tests for logic behind ProjectService.cs. These tests are done with xunit.
+
+- Data 
+  - GetAllData
+  - GetAllInvalidProjectDateData
+  - GetAllProjectSortedByNameData
+  - UpdateAsync
+
+- Services  
+  - ProjectServiceTests
+
+ProjectServiceTests test the following:
+
+- GetAllProjects based on invalid data, this test should throw an exception
+- GetAllProjects sorted by name, should return all projects sorted by name
+- GetAllProjects even when the fields are null, return all projects
+- GetById update project should update the project
+
+
 ## Support
 For any further questions, or any help in starting the project, you can contact me on anabogdanovic995@gmail.com, I'd be happy to help or provide more information.
