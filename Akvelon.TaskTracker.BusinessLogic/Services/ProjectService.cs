@@ -93,7 +93,7 @@ namespace Akvelon.TaskTracker.BusinessLogic.Services
 
             var projectModels = new List<ProjectModel>();
 
-            foreach (var project in projects)
+            foreach (var project in searchedProjects)
             {
                 projectModels.Add(_mapper.Map<ProjectModel>(project));
             }
