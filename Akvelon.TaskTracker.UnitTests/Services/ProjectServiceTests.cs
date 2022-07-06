@@ -12,6 +12,7 @@ namespace Akvelon.TaskTracker.UnitTests.Services
 {
     public class ProjectServiceTests
     {
+        //Moq makes a fake repository based on real one
         private readonly Mock<IProjectRepository> _projectRepositoryMock;
 
         private readonly Mock<IMapper> _mapperMock;
@@ -22,6 +23,7 @@ namespace Akvelon.TaskTracker.UnitTests.Services
             _mapperMock = new Mock<IMapper>();
         }
 
+        //This is a test for checking if the start date is greater that end date and should throw an exception
         [Theory]
         [ClassData(typeof(GetAllInvalidProjectDateData))]
         public async System.Threading.Tasks.Task GetAllAsync_ShouldThrowException_WhenStarProjectIsAfterEndProject(
@@ -43,6 +45,7 @@ namespace Akvelon.TaskTracker.UnitTests.Services
             assertions.And.Message.Should().Be("Start Date cannot be after the End Date");
         }
 
+        //This is a test for checking if the sort by name is working
         [Theory]
         [ClassData(typeof(GetAllProjectsSortedByNameData))]
         public async System.Threading.Tasks.Task GetAllAsync_ShouldReturnProjects_SortedByName(
@@ -58,6 +61,7 @@ namespace Akvelon.TaskTracker.UnitTests.Services
             // Arrange
             var projectService = new ProjectService(_projectRepositoryMock.Object, _mapperMock.Object);
 
+            //Mocking getting unsorted projects 
             _projectRepositoryMock.Setup(x => x.GetAllAsync()).ReturnsAsync(projects);
 
             for (int i = 0; i < projects.Count; i++)
@@ -72,6 +76,7 @@ namespace Akvelon.TaskTracker.UnitTests.Services
             result.Should().Equal(sortedProjects);
         }
 
+        //This is a test for checking if the program will return all projects when fields are null
         [Theory]
         [ClassData(typeof(GetAllData))]
         public async System.Threading.Tasks.Task GetAllAsync_ShouldReturnEveryProject_WhenFieldsAreNull(
@@ -101,7 +106,7 @@ namespace Akvelon.TaskTracker.UnitTests.Services
             result.Should().Equal(expectedProjects);
         }
 
-
+        //This test checks if the data has been updated
         [Theory]
         [ClassData(typeof(UpdateAsync))]
         public async System.Threading.Tasks.Task UpdateAsync_ShouldUpdateProject_WhenDataIsValid(

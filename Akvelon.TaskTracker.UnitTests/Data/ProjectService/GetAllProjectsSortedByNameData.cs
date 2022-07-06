@@ -4,6 +4,7 @@ using Bogus;
 
 namespace Akvelon.TaskTracker.UnitTests.Data.ProjectService
 {
+    //Prepare the data for the test
     public class GetAllProjectsSortedByNameData : TheoryData<DateTime?, DateTime?, string, List<Project>, List<ProjectModel>>
     {
         public GetAllProjectsSortedByNameData()
@@ -13,6 +14,7 @@ namespace Akvelon.TaskTracker.UnitTests.Data.ProjectService
             var startProject = DateTime.UtcNow;
             var endProject = DateTime.UtcNow.AddDays(1);
 
+            //Unsorted projects
             List<Project> projects = new List<Project>()
             {
                 new Project()
@@ -25,6 +27,7 @@ namespace Akvelon.TaskTracker.UnitTests.Data.ProjectService
                 }
             };
 
+            //How projects should be sorted
             List<ProjectModel> sortedProjects = new List<ProjectModel>()
             {
                 new ProjectModel()
