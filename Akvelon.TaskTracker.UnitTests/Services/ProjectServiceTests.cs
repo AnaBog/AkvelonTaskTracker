@@ -49,13 +49,13 @@ namespace Akvelon.TaskTracker.UnitTests.Services
         [Theory]
         [ClassData(typeof(GetAllProjectsSortedByNameData))]
         public async System.Threading.Tasks.Task GetAllAsync_ShouldReturnProjects_SortedByName(
-            DateTime? startProject,
-            DateTime? endProject,
-            string? searchTerm,
+            string? sortColumn,
+            string? sortDirection,
             List<Project>? projects,
             List<ProjectModel>? sortedProjects,
-            string? sortColumn = null,
-            string? sortDirection = null,
+            DateTime? startProject = null,
+            DateTime? endProject = null,
+            string? searchTerm = null,
             ProjectPriority? priority = null)
         {
             // Arrange
@@ -80,10 +80,10 @@ namespace Akvelon.TaskTracker.UnitTests.Services
         [Theory]
         [ClassData(typeof(GetAllData))]
         public async System.Threading.Tasks.Task GetAllAsync_ShouldReturnEveryProject_WhenFieldsAreNull(
-            DateTime? startProject,
-            DateTime? endProject,
             List<Project> projects,
             List<ProjectModel> expectedProjects,
+            DateTime? startProject = null,
+            DateTime? endProject = null,
             string? searchTerm = null,
             string? sortColumn = null,
             string? sortDirection = null,

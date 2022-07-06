@@ -128,7 +128,6 @@ namespace Akvelon.TaskTracker.BusinessLogic.Services
 
         public async Task<Guid> UpdateAsync(Guid id, ProjectModel projectModel)
         {
-            
             var projectToUpdate = await _projectRepository.GetByIdAsync(id);
 
             projectToUpdate.Name = projectModel.Name;

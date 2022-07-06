@@ -5,14 +5,12 @@ using Bogus;
 namespace Akvelon.TaskTracker.UnitTests.Data.ProjectService
 {
     //Prepare the data for the test
-    public class GetAllProjectsSortedByNameData : TheoryData<DateTime?, DateTime?, string, List<Project>, List<ProjectModel>>
+    public class GetAllProjectsSortedByNameData : TheoryData<string, string, List<Project>, List<ProjectModel>>
     {
         public GetAllProjectsSortedByNameData()
         {
             var faker = new Faker();
 
-            var startProject = DateTime.UtcNow;
-            var endProject = DateTime.UtcNow.AddDays(1);
 
             //Unsorted projects
             List<Project> projects = new List<Project>()
@@ -40,7 +38,7 @@ namespace Akvelon.TaskTracker.UnitTests.Data.ProjectService
                 }
             };
 
-            Add(startProject, endProject, faker.Random.String(), projects, sortedProjects);
+            Add("Name", "asc", projects, sortedProjects);
         }
     }
 }

@@ -3,18 +3,19 @@ using Akvelon.TaskTracker.Repository.Entities;
 
 namespace Akvelon.TaskTracker.UnitTests.Data.ProjectService
 {
-    public class GetAllData : TheoryData<DateTime?, DateTime?, List<Project>, List<ProjectModel>>
+    public class GetAllData : TheoryData<List<Project>, List<ProjectModel>>
     {
         public GetAllData()
         {
-            var startProject = DateTime.UtcNow;
-            var endProject = DateTime.UtcNow.AddDays(1);
-
             List<Project> projects = new List<Project>()
             {
                 new Project()
                 {
-                    Name = "Ana"
+                    Name = "Ana Drugi Projekat"
+                },
+                 new Project()
+                {
+                    Name = "Ana Projekat"
                 }
             };
 
@@ -22,11 +23,15 @@ namespace Akvelon.TaskTracker.UnitTests.Data.ProjectService
             {
                 new ProjectModel()
                 {
-                    Name = "Ana"
+                    Name = "Ana Drugi Projekat"
+                },
+                new ProjectModel()
+                {
+                    Name = "Ana Projekat"
                 }
             };
 
-            Add(startProject, endProject, projects, expectedProjects);
+            Add(projects, expectedProjects);
         }
     }
 }
